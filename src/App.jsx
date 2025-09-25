@@ -1,5 +1,7 @@
 
 import './App.css'
+import cardImg from "./assets/vector1.png"
+import cardImg2 from "./assets/vector2.png"
 
 function App() {
    return (
