@@ -14,71 +14,61 @@ function App() {
     const [tickets, setTickets] = useState([]); 
     const [inProgressTasks, setInProgressTasks] = useState([]); 
     const [resolvedTasks, setResolvedTasks] = useState([]); 
-    
-    
     const inProgressCount = inProgressTasks.length;
     const resolvedCount = resolvedTasks.length;
 
-    
+      //functions
     useEffect(() => {
         fetch('/cards.json') 
             .then(res => res.json())
             .then(data => {
                 setTickets(data); 
                 setInProgressTasks([]); 
-                setResolvedTasks([]); 
-            })
-            .catch(error => console.error("Error fetching tickets:", error));
-    }, []); 
+                setResolvedTasks([])})
+            .catch(error => console.error("Error fetching tickets:", error));}, []); 
     const handleCardClick = (ticket) => {
         const isInProgress = inProgressTasks.some(task => task.id === ticket.id);
         const isResolved = resolvedTasks.some(task => task.id === ticket.id);
         
         if (isInProgress || isResolved) {
             alert(`Ticket #${ticket.id} is already being worked on or resolved.`);
-            return;
-        }
+            return;}
 
         alert(`Ticket #${ticket.id} (${ticket.title}) added to Task Status.`);
         //  Add to In-Progress sidebar
         setInProgressTasks(prevTasks => [...prevTasks, ticket]);
         
         //  Remove from the Customer Tickets list
-        setTickets(prevTickets => prevTickets.filter(t => t.id !== ticket.id));
-    };
+        setTickets(prevTickets => prevTickets.filter(t => t.id !== ticket.id)) };
 
     const handleCompleteTask = (taskToComplete) => {
         alert(`Task: ${taskToComplete.title} marked as Complete!`);
         setInProgressTasks(prevTasks => prevTasks.filter(task => task.id !== taskToComplete.id));
-        
-       setResolvedTasks(prevTasks => [{ id: taskToComplete.id, title: taskToComplete.title }, ...prevTasks]);
-    };
+        setResolvedTasks(prevTasks => [{ id: taskToComplete.id, title: taskToComplete.title }, ...prevTasks]);};
 
+  //  return starts from here
     return (
         <>
             {/* Navbar */}
-                        <nav className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
-                <div className="text-2xl font-semibold text-[#120B48]">
-                    <span className="font-bold">CS - Ticket System</span>
-                </div>
-                <div className="hidden md:flex items-center space-x-8">
-                    <a href="#" className="text-sm hover:text-purple-600 transition">Home</a>
-                    <a href="#" className="text-sm hover:text-purple-600 transition">FAQ</a>
-                    <a href="#" className="text-sm hover:text-purple-600 transition">Changelog</a>
-                    <a href="#" className="text-sm hover:text-purple-600 transition">Blog</a>
-                    <a href="#" className="text-sm hover:text-purple-600 transition">Download</a>
-                    <a href="#" className="text-sm hover:text-purple-600 transition">Contact</a>
-                    <button className="bg-gradient-to-r from-purple-700 to-purple-500 hover:text-black text-white px-4 py-2 rounded-md text-sm font-semibold shadow hover:opacity-90 transition" >
-                        <span className="button">＋</span> New Ticket</button>
-                </div>
-            </nav>
+            <nav className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
+                <div className="text-2xl font-semibold text-[#120B48]">
+                    <span className="font-bold">CS - Ticket System</span>
+                </div>
+                <div className="hidden md:flex items-center space-x-8">
+               <a href="#" className="text-sm hover:text-purple-600 transition">Home</a>
+               <a href="#" className="text-sm hover:text-purple-600 transition">FAQ</a>
+             <a href="#" className="text-sm hover:text-purple-600 transition">Changelog</a>
+              <a href="#" className="text-sm hover:text-purple-600 transition">Blog</a>
+      <a href="#" className="text-sm hover:text-purple-600 transition">Download</a>
+       <a href="#" className="text-sm hover:text-purple-600 transition">Contact</a>
+    <button className="bg-gradient-to-r from-purple-700 to-purple-500 hover:text-black text-white px-4 py-2 rounded-md text-sm font-semibold shadow hover:opacity-90 transition" >
+                        <span className="button">＋</span> New Ticket</button>
+                </div>
+            </nav>
+     {/*navbar ends here  */}
 
 
-        
-          
-  
-
-    {/* Banner Cards */}
+            {/* Banner Cards */}
             <div className="w-full px-6 md:px-12 py-10 bg-gray-50">
                 <div className="flex flex-col sm:flex-row gap-6 w-full">
                     {/* In-Progress Card */}
@@ -94,6 +84,7 @@ function App() {
                     </div>
                 </div>
             </div>
+         {/* banner section ends here */}
 
             {/* Main Section */}
             <div className="min-h-screen bg-gray-50 p-6 sm:p-10">
@@ -176,6 +167,8 @@ function App() {
                     </div>
                 </div>
             </div>
+            {/* main section ends here */}
+            
 
             {/* footer section */}
            <footer className="bg-black text-white pt-16">
@@ -250,5 +243,6 @@ function App() {
 </footer>
         </>
     );
-};
-export default App;                                                                                                                                                                    
+}
+
+export default App;                                                                                                                                                                       
