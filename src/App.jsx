@@ -11,31 +11,26 @@ const STATUS_COLORS = {
 };
 
 function App() { 
-    // State management
+    
     const [tickets, setTickets] = useState([]); 
     const [inProgressTasks, setInProgressTasks] = useState([]); 
     const [resolvedTasks, setResolvedTasks] = useState([]); 
     
-    // Derived state for counts
+    
     const inProgressCount = inProgressTasks.length;
     const resolvedCount = resolvedTasks.length;
 
-    // 🌟 CORRECTED useEffect: Loads all 10 tickets into the main grid and starts sidebars empty
+    
     useEffect(() => {
         fetch('/cards.json') 
             .then(res => res.json())
             .then(data => {
-                // Load all 10 tickets into the main Customer Tickets list
                 setTickets(data); 
-                
-                // Start with empty sidebars
                 setInProgressTasks([]); 
                 setResolvedTasks([]); 
             })
             .catch(error => console.error("Error fetching tickets:", error));
     }, []); 
-
-    // HANDLERS
     const handleCardClick = (ticket) => {
         const isInProgress = inProgressTasks.some(task => task.id === ticket.id);
         const isResolved = resolvedTasks.some(task => task.id === ticket.id);
@@ -46,10 +41,10 @@ function App() {
         }
 
         alert(`Ticket #${ticket.id} (${ticket.title}) added to Task Status.`);
-        // 1. Add to In-Progress sidebar
+        //  Add to In-Progress sidebar
         setInProgressTasks(prevTasks => [...prevTasks, ticket]);
         
-        // 2. Remove from the Customer Tickets list
+        //  Remove from the Customer Tickets list
         setTickets(prevTickets => prevTickets.filter(t => t.id !== ticket.id));
     };
 
@@ -185,6 +180,73 @@ function App() {
                     </div>
                 </div>
             </div>
+            {/* footer section */}
+            <footer className="bg-[#120B48] text-white pt-16">
+    <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 border-b border-gray-700 pb-10">
+            
+            {/* 1. Logo & Description */}
+            <div className="col-span-2 md:col-span-2">
+                <h3 className="text-2xl font-bold mb-4">CS — Ticket System</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+            </div>
+
+            {/* 2. Company Links */}
+            <div>
+                <h4 className="text-lg font-semibold mb-4">Company</h4>
+                <ul className="space-y-3 text-sm">
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Mission</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Sales</a></li>
+                </ul>
+            </div>
+
+            {/* 3. Services Links */}
+            <div>
+                <h4 className="text-lg font-semibold mb-4">Services</h4>
+                <ul className="space-y-3 text-sm">
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Products & Services</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Customer Stories</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Download Apps</a></li>
+                </ul>
+            </div>
+
+            {/* 4. Information & Social Links */}
+            <div className="col-span-2 md:col-span-1">
+                <h4 className="text-lg font-semibold mb-4">Information</h4>
+                <ul className="space-y-3 text-sm mb-8">
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
+                    <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Join Us</a></li>
+                </ul>
+
+                <h4 className="text-lg font-semibold mb-4">Social Links</h4>
+                <ul className="space-y-3 text-sm">
+                    {/* Placeholder for social icons (using text for simplicity) */}
+                    <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                        <span className="font-bold">X</span> <span>@CS — Ticket System</span>
+                    </li>
+                    <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                        <span className="font-bold">in</span> <span>@CS — Ticket System</span>
+                    </li>
+                    <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                        <span className="font-bold">f</span> <span>@CS — Ticket System</span>
+                    </li>
+                    <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                        <span className="font-bold">@</span> <span>support@cst.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {/* Copyright Section */}
+        <div className="py-6 text-center text-sm text-gray-500">
+            © 2025 CS — Ticket System. All rights reserved.
+        </div>
+    </div>
+</footer>
         </>
     );
 }
