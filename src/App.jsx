@@ -96,11 +96,6 @@ function App() {
 
             {/* Main Section */}
             <div className="min-h-screen bg-gray-50 p-6 sm:p-10">
-                <header className="mb-6">
-                    <h1 className="text-3xl font-bold text-gray-800">Customer Tickets</h1>
-                    
-                </header>
-
                 <div className="flex flex-col lg:flex-row gap-6">
                     
                     {/* TICKET GRID SECTION (Left - W-3/4) */}
@@ -180,21 +175,24 @@ function App() {
                     </div>
                 </div>
             </div>
+
             {/* footer section */}
-            <footer className="bg-[#120B48] text-white pt-16">
+           <footer className="bg-black text-white pt-16">
     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 border-b border-gray-700 pb-10">
+        
+        
+        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1fr] gap-x-10 gap-y-12 border-b border-gray-700 pb-10">
             
-            {/* 1. Logo & Description */}
-            <div className="col-span-2 md:col-span-2">
+            {/* 1. Logo & Description (Wider Column) */}
+            <div className="col-span-2 md:col-span-2 lg:col-span-1">
                 <h3 className="text-2xl font-bold mb-4">CS — Ticket System</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                <p className="text-sm text-gray-400 leading-relaxed pr-8">
+                    This is a simple customer ticket service webpage. We try to solve your e-ticket related issues and get you available tickets as soon as possible.
                 </p>
             </div>
 
             {/* 2. Company Links */}
-            <div>
+            <div className="col-span-1">
                 <h4 className="text-lg font-semibold mb-4">Company</h4>
                 <ul className="space-y-3 text-sm">
                     <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
@@ -204,7 +202,7 @@ function App() {
             </div>
 
             {/* 3. Services Links */}
-            <div>
+            <div className="col-span-1">
                 <h4 className="text-lg font-semibold mb-4">Services</h4>
                 <ul className="space-y-3 text-sm">
                     <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Products & Services</a></li>
@@ -213,29 +211,32 @@ function App() {
                 </ul>
             </div>
 
-            {/* 4. Information & Social Links */}
-            <div className="col-span-2 md:col-span-1">
+            {/* 4. Information Links */}
+            <div className="col-span-1">
                 <h4 className="text-lg font-semibold mb-4">Information</h4>
-                <ul className="space-y-3 text-sm mb-8">
+                <ul className="space-y-3 text-sm">
                     <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
                     <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                     <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Join Us</a></li>
                 </ul>
-
+            </div>
+            
+            {/* 5. Social Links */}
+            <div className="col-span-1">
                 <h4 className="text-lg font-semibold mb-4">Social Links</h4>
                 <ul className="space-y-3 text-sm">
-                    {/* Placeholder for social icons (using text for simplicity) */}
+                    {/* Placeholder for social icons */}
                     <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
-                        <span className="font-bold">X</span> <span>@CS — Ticket System</span>
+                        <span className="w-4">X</span> <span>@CS — Ticket System</span>
                     </li>
                     <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
-                        <span className="font-bold">in</span> <span>@CS — Ticket System</span>
+                        <span className="w-4">in</span> <span>@CS — Ticket System</span>
                     </li>
                     <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
-                        <span className="font-bold">f</span> <span>@CS — Ticket System</span>
+                        <span className="w-4">f</span> <span>@CS — Ticket System</span>
                     </li>
                     <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
-                        <span className="font-bold">@</span> <span>support@cst.com</span>
+                        <span className="w-4">@</span> <span>support@cst.com</span>
                     </li>
                 </ul>
             </div>
