@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState, useEffect, useMemo } from 'react';
 
-// Define global constants for styling
 const STATUS_COLORS = {
     'Open': 'bg-green-200 text-green-800 border-green-500',
     'In-Progress': 'bg-yellow-200 text-yellow-800 border-yellow-500',
@@ -50,11 +49,9 @@ function App() {
 
     const handleCompleteTask = (taskToComplete) => {
         alert(`Task: ${taskToComplete.title} marked as Complete!`);
-        
-        // 1. Remove from Task Status (decreases In-Progress count)
         setInProgressTasks(prevTasks => prevTasks.filter(task => task.id !== taskToComplete.id));
         
-        // 2. Add to Resolved List (increases Resolved count)
+        
         setResolvedTasks(prevTasks => [{ id: taskToComplete.id, title: taskToComplete.title }, ...prevTasks]);
     };
 
@@ -63,7 +60,7 @@ function App() {
             {/* Navbar */}
             <nav className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
                 <div className="text-2xl font-semibold text-[#120B48]">
-                    <span className="font-bold">CS</span> — <span className="font-semibold">Ticket System</span>
+                    <span className="font-bold">CS - Ticket System</span>
                 </div>
                 <div className="flex items-center space-x-8">
                     <a href="#" className="text-sm hover:text-purple-600 transition">Home</a>
@@ -98,7 +95,7 @@ function App() {
             <div className="min-h-screen bg-gray-50 p-6 sm:p-10">
                 <div className="flex flex-col lg:flex-row gap-6">
                     
-                    {/* TICKET GRID SECTION (Left - W-3/4) */}
+                    {/* left side part */}
                     <div className="w-full lg:w-3/4">
                         <h2 className="text-2xl font-semibold mb-4 text-gray-700">Customer Tickets</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -133,7 +130,7 @@ function App() {
                         </div>
                     </div>
                     
-                    {/* TASK STATUS SIDEBAR (Right - W-1/4) */}
+                    {/* right side part */}
                     <div className="w-full lg:w-1/4 bg-white p-6 rounded-lg shadow-xl sticky top-6 self-start">
                         
                         {/* Task Status Section */}
@@ -183,7 +180,7 @@ function App() {
         
         <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1fr] gap-x-10 gap-y-12 border-b border-gray-700 pb-10">
             
-            {/* 1. Logo & Description (Wider Column) */}
+            {/* 1. Logo & Description */}
             <div className="col-span-2 md:col-span-2 lg:col-span-1">
                 <h3 className="text-2xl font-bold mb-4">CS — Ticket System</h3>
                 <p className="text-sm text-gray-400 leading-relaxed pr-8">
@@ -225,7 +222,6 @@ function App() {
             <div className="col-span-1">
                 <h4 className="text-lg font-semibold mb-4">Social Links</h4>
                 <ul className="space-y-3 text-sm">
-                    {/* Placeholder for social icons */}
                     <li className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
                         <span className="w-4">X</span> <span>@CS — Ticket System</span>
                     </li>
