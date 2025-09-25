@@ -23,7 +23,21 @@ function App() {
       </div>
     </nav>
     {/* banner cards */}
-    
+     <div className="w-full px-6 md:px-12 py-10 bg-gray-50">
+    <div className="flex flex-col sm:flex-row gap-6 w-full">
+      {/* In-Progress Card */}
+      <div className="flex-1 h-60 rounded-xl bg-gradient-to-r from-purple-700 to-purple-400 text-white p-8 shadow-md flex flex-col justify-center items-center">
+        <p className="text-lg font-medium">In-Progress</p>
+        <p className="text-4xl font-bold mt-2">0</p>
+      </div>
+
+      {/* Resolved Card */}
+      <div className="flex-1 rounded-xl bg-gradient-to-r from-green-300 to-green-600 text-white p-8 shadow-md flex flex-col justify-center items-center">
+        <p className="text-lg font-medium">Resolved</p>
+        <p className="text-4xl font-bold mt-2">0</p>
+      </div>
+    </div>
+    </div>
    
     </>
   )
