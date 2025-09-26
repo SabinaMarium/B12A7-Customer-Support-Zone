@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useEffect, useMemo } from 'react';
+import { ToastContainer,toast} from 'react-toastify';
 
 const STATUS_COLORS = {
     'Open': 'bg-green-200 text-green-800 border-green-500',
@@ -31,10 +32,10 @@ function App() {
         const isResolved = resolvedTasks.some(task => task.id === ticket.id);
         
         if (isInProgress || isResolved) {
-            alert(`Ticket #${ticket.id} is already being worked on or resolved.`);
+            toast(`Ticket #${ticket.id} is already being worked on or resolved.`);
             return;}
 
-        alert(`Ticket #${ticket.id} (${ticket.title}) added to Task Status.`);
+        toast(`Ticket #${ticket.id} (${ticket.title}) added to Task Status.`);
         //  Add to In-Progress sidebar
         setInProgressTasks(prevTasks => [...prevTasks, ticket]);
         
@@ -42,7 +43,7 @@ function App() {
         setTickets(prevTickets => prevTickets.filter(t => t.id !== ticket.id)) };
 
     const handleCompleteTask = (taskToComplete) => {
-        alert(`Task: ${taskToComplete.title} marked as Complete!`);
+        toast(`Task: ${taskToComplete.title} marked as Complete!`);
         setInProgressTasks(prevTasks => prevTasks.filter(task => task.id !== taskToComplete.id));
         setResolvedTasks(prevTasks => [{ id: taskToComplete.id, title: taskToComplete.title }, ...prevTasks]);};
 
@@ -168,7 +169,7 @@ function App() {
                 </div>
             </div>
             {/* main section ends here */}
-            
+
 
             {/* footer section */}
            <footer className="bg-black text-white pt-16">
@@ -241,6 +242,7 @@ function App() {
         </div>
     </div>
 </footer>
+<ToastContainer/>
         </>
     );
 }
